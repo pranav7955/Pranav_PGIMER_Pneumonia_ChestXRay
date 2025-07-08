@@ -171,24 +171,26 @@ This model is clinically usable for screening tasks, with strong pneumonia detec
 
 ### Q1: **Why and what layers of the model did you fine-tune?**
 
-A: 🎯 Why Did We Fine-Tune Certain Layers?
-We used InceptionV3 (pretrained on ImageNet), which already learns low-level features like edges, textures, and patterns in early layers. But:
+A: #### 🎯 Why Did We Fine-Tune Certain Layers?
 
-Pneumonia X-rays are grayscale, medical-specific, and differ from natural color images.
+We used **InceptionV3 pretrained on ImageNet**, which learns general visual patterns like edges and textures in its early layers. However:
 
-So we kept early layers frozen (generic features) and fine-tuned later layers, which learn task-specific patterns like lung opacities or infiltrates.
+- Chest X-rays are **grayscale**, **medical-specific**, and **structurally different** from natural images.
+- Pneumonia features (e.g., opacities, infiltrates) are subtle and domain-specific.
 
-Goal:
-To retain general visual understanding but adapt high-level representations to pneumonia detection.
+🧠 So we **froze early layers** (to retain generic vision knowledge) and **fine-tuned deeper layers** (to adapt to pneumonia-specific signals).
 
-🧩 Which Layers Were Fine-Tuned?
-|Layer Group |	Description|	Action Taken|
-| ------------ | ----- | ------------------------------------------ |
-|Initial layers (e.g., conv2d_1 to mixed7)	| Learn universal visual patterns — reusable. |	❄️ Frozen |
-|Deeper layers (e.g., mixed8, mixed9, mixed10)	| Contain more task-specific features — fine details, shape recognition, lesion textures. |	🔓 Unfrozen and fine-tuned|
-|Classification head |	Custom Dense + Dropout + Sigmoid layers we added on top | 🔨 Trained from scratch|
+---
 
-* In short, We fine-tuned only the top 20–30 layers of InceptionV3 (mainly mixed8 to mixed10) because these layers are responsible for task-specific features. Early layers were frozen as they already captured general-purpose image features from ImageNet.
+#### 🧩 Which Layers Were Fine-Tuned?
+
+| Layer Group                  | Description                                                                      | Action Taken                   |
+|-----------------------------|----------------------------------------------------------------------------------|--------------------------------|
+| Initial layers (`conv2d_1` to `mixed7`) | Learn universal patterns like edges and textures.                             | ❄️ Frozen                      |
+| Deeper layers (`mixed8`, `mixed9`, `mixed10`) | Capture domain-specific features: shape, density, lesion texture.              | 🔓 Unfrozen & Fine-Tuned       |
+| Classification head         | Custom layers: `GlobalAvgPool → Dropout → Dense(1024) → Dense(1, sigmoid)`      | 🔨 Trained from scratch        |
+
+💡 *In short, We fine-tuned approximately the top 20–30 layers of InceptionV3 (mainly `mixed8` to `mixed10`), because these layers specialize in abstract, domain-specific image understanding critical for pneumonia detection.*
 
 ### Q2: **Describe how you split your data for fine-tuning.**
 
