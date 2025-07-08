@@ -255,7 +255,25 @@ A: 🩺 Clinician Takeaway (One-Liner)
 This clinical ready screening model accurately detects pneumonia in X-rays with visual explanations — and holds greater potential with further fine-tuning on 5,000+ high-quality adult X-rays [Phase 3 dataset](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia).
 
 ---
+## 🛠️ Hyperparameter Choices – A Quick Note
+#### A short note on hyper-parameter choices (learning rate, batch size, epochs, etc.).
 
+We carefully selected training hyperparameters to balance speed, generalization, and convergence stability, particularly given the small medical dataset.
+
+| Hyperparameter       | Value         | Rationale                                                                 |
+|----------------------|---------------|--------------------------------------------------------------------------|
+| **Learning Rate (Phase 1)** | `1e-4`        | Suitable for training custom dense head on frozen base model.             |
+| **Learning Rate (Phase 2)** | `1e-5`        | Lower rate ensures gradual, stable fine-tuning of unfrozen base layers.   |
+| **Batch Size**       | `32`          | A safe balance between GPU memory usage and gradient estimation quality.  |
+| **Epochs**           | `10` per phase| Empirically observed early convergence + monitored via early stopping.    |
+| **Loss Function**    | `Focal Loss`  | Handles class imbalance and improves minority class recall (Normal cases).|
+| **Optimizer**        | `Adam`        | Adaptive learning rate, commonly used for transfer learning scenarios.    |
+| **EarlyStopping**    | Patience = 3  | Stops training when no improvement in validation loss.                    |
+| **ReduceLROnPlateau**| Patience = 2, factor = 0.5 | Dynamically reduces LR if val loss plateaus.              |
+
+📌 These values were fine-tuned over multiple experiments and kept general enough for reproducibility across other similar chest X-ray datasets.
+
+---
 ## 🔗 Links
 
 * 🔬 [Kaggle Notebook (Pn\_Test004)](https://www.kaggle.com/code/pranav7955/pn-test004)
