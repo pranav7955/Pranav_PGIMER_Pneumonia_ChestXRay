@@ -299,3 +299,32 @@ To reproduce results on Kaggle:
 
 **Developed by Pranav for PGIMER Research**
 
+## 🌟 Key Highlights
+
+This section outlines the major achievements and contributions of the project.
+
+---
+
+# 🌟🌟🌟 Model Evaluation Results 🌟🌟🌟
+
+Includes accuracy, AUC, precision-recall, and misclassification analysis.
+
+---
+
+> 🌟 **Star Feature:** We fine-tuned only the top 30 layers of InceptionV3 for pneumonia detection.
+
+---
+
+---
+🌟🌟🌟🌟🌟  
+**Critical Section: Fine-Tuning Strategy**  
+🌟🌟🌟🌟🌟  
+---
+
+#### ✨ Why This Model Deserves Clinical Attention ✨
+
+Trained on real patient data, interpretable Grad-CAMs, and strong ROC-AUC performance.
+
+---
+
+> 📌 **Note:** This section is critical for understanding model adaptation and layer fine-tuning.
