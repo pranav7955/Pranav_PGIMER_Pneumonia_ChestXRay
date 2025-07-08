@@ -56,6 +56,9 @@ Optimizer: **Adam**
 * Used oversampling + heavy augmentation
 * Final model accuracy: **82%** with AUC: **0.88** on adult dataset
 
+  ![image](https://github.com/user-attachments/assets/260c72ea-4a89-4dbb-a2dc-a2ff53c1cc1b)
+
+
 ---
 
 ## 📊 Evaluation Summary
@@ -66,6 +69,12 @@ Optimizer: **Adam**
 | AUC       | 0.88             |
 | Precision | 0.88 (Pneumonia) |
 | Recall    | 0.82 (Pneumonia) |
+![image](https://github.com/user-attachments/assets/857c5ce6-2f8a-4a0d-bf8f-439ee1e98cd4)
+![image](https://github.com/user-attachments/assets/0d516fe6-8d40-4cde-935a-70dbc5a9947f)
+![image](https://github.com/user-attachments/assets/5944de6b-89bc-415f-bca3-5922b37fa01f)
+
+
+
 
 ### Confusion Matrix
 
@@ -73,6 +82,20 @@ Optimizer: **Adam**
 | ------------------- | ------------ | --------------- |
 | **True: Normal**    | 191          | 43              |
 | **True: Pneumonia** | 70           | 320             |
+
+![image](https://github.com/user-attachments/assets/d6974295-5e32-4069-b4b6-609b6fd3129d)
+
+### Classification Report:
+              precision    recall  f1-score   support
+
+      Normal       0.73      0.82      0.77       234
+   Pneumonia       0.88      0.82      0.85       390
+
+    accuracy                           0.82       624
+   macro avg       0.80      0.82      0.81       624
+weighted avg       0.82      0.82      0.82       624
+
+![image](https://github.com/user-attachments/assets/71750dff-db2d-406f-ac2a-2b8a8b95a1a3)
 
 ---
 
@@ -84,6 +107,12 @@ Optimizer: **Adam**
 
   * True Positives / Negatives
   * False Positives / Negatives (see misclassification study below)
+![image](https://github.com/user-attachments/assets/13e220f9-1d93-40d2-9aa8-4d7c58d9cef4)
+![image](https://github.com/user-attachments/assets/66d222df-94b6-43c6-b3b8-0836d06beded)
+![image](https://github.com/user-attachments/assets/c4c432df-0f1e-4cc5-bc1f-321c80a82866)
+
+
+
 
 ---
 
