@@ -126,7 +126,7 @@ Optimizer: **Adam**
 * 🚨 **High Normal Recall (0.82)**: Model misses fewer Normal cases.
 * 🩺 **Balanced F1-scores**: Indicates strong generalization, not biased toward one class.
 
-### 💡 Bottom Line:
+## 💡 Bottom Line:
 
 This model is clinically usable for screening tasks, with strong pneumonia detection and reasonable misclassification rate on Normal cases. Further improvements could focus on increasing recall for pneumonia (to avoid missed cases) or improving precision for Normal (to avoid overdiagnosis).
 ---
@@ -192,7 +192,7 @@ To retain general visual understanding but adapt high-level representations to p
 
 ### Q2: **Describe how you split your data for fine-tuning.**
 
-A: ### 📁 Data Splitting Strategy
+A: 📁 Data Splitting Strategy
 
 We used the **PneumoniaMNIST** dataset, which provides pre-divided `.npz` files for training, validation, and testing:
 - `train_images`, `train_labels`
@@ -207,15 +207,49 @@ The validation and test sets were kept **untouched**, ensuring fair and unbiased
 
 ### Q3: **How is the evaluation metric (AUC) clinically relevant?**
 
-A: AUC reflects the model's ability to balance sensitivity and specificity—critical in pneumonia screening to avoid missed cases (FN) or overdiagnosis (FP).
+A: 📈 Relevance of Evaluation Metric to Clinical Use Case
+
+We primarily used **AUC (Area Under the ROC Curve)** as our key evaluation metric, along with **precision**, **recall**, and **F1-score**.
+
+- **AUC** measures the model’s ability to distinguish between "Pneumonia" and "Normal" cases across various thresholds.  
+  In clinical diagnosis, this helps gauge how reliably the model can prioritize suspicious scans even if decision thresholds shift.
+
+- **High Recall (Sensitivity)** ensures that most actual pneumonia cases are correctly flagged — minimizing **false negatives**, which is critical to avoid missed diagnoses.
+
+- **High Precision** means fewer **false positives**, preventing unnecessary alarm or further invasive investigations.
+
+This combination of metrics provides a more robust assessment than simple accuracy — which can be misleading in imbalanced medical datasets.
+It reflects real-world risks and supports safer, more confident decision-making in clinical workflows.
+
 
 ### Q4: **Example of a misclassified case and next step?**
 
-A: One case was labeled Pneumonia but misclassified as Normal. Grad-CAM showed diffused attention with unclear opacity—likely due to low image contrast. Next, we will test contrast normalization and explore ensemble models.
+A: ❌ Misclassified Case Analysis & Next Steps
+
+One test image that was **actually Pneumonia** was incorrectly predicted as **Normal**.
+
+🧠 **Why it failed:**
+- The misclassified chest X-ray showed **subtle opacities** that were not strongly highlighted by Grad-CAM.
+- This suggests the model may not have focused on the **true pathological regions**.
+- Possible reasons include:
+  - Low contrast or underexposed image
+  - Lack of similar subtle patterns in training data
+  - Over-generalization by the model during fine-tuning
+
+🔧 **What we would try next:**
+- Apply **histogram equalization** or **contrast enhancement** as preprocessing to improve visibility of lesions.
+- Incorporate **image sharpening filters** to highlight edges and textures.
+- Introduce **attention mechanisms** or **multi-view ensembling** for better context understanding.
+- Expand training with more borderline/pathologically mild pneumonia cases.
+
+Such improvements aim to reduce false negatives — especially crucial in clinical triage settings.
+
 
 ### Q5: **Why is this model worth a clinician's attention?**
 
-A: "This model offers fast, accurate pneumonia detection with interpretability via heatmaps."
+A: 🩺 Clinician Takeaway (One-Liner)
+
+This clinical ready screening model accurately detects pneumonia in X-rays with visual explanations — and holds greater potential with further fine-tuning on 5,000+ high-quality adult X-rays [Phase 3 dataset](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia).
 
 ---
 
