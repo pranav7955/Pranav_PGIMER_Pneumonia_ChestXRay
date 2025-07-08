@@ -188,9 +188,22 @@ To retain general visual understanding but adapt high-level representations to p
 |Deeper layers (e.g., mixed8, mixed9, mixed10)	| Contain more task-specific features — fine details, shape recognition, lesion textures. |	🔓 Unfrozen and fine-tuned|
 |Classification head |	Custom Dense + Dropout + Sigmoid layers we added on top | 🔨 Trained from scratch|
 
+* In short, We fine-tuned only the top 20–30 layers of InceptionV3 (mainly mixed8 to mixed10) because these layers are responsible for task-specific features. Early layers were frozen as they already captured general-purpose image features from ImageNet.
+
 ### Q2: **Describe how you split your data for fine-tuning.**
 
-A: Pediatric data was used for Phase 1 training. Phase 2 fine-tuning reused the adult subset (split into train/val/test) with random oversampling and strong augmentation.
+A: ### 📁 Data Splitting Strategy
+
+We used the **PneumoniaMNIST** dataset, which provides pre-divided `.npz` files for training, validation, and testing:
+- `train_images`, `train_labels`
+- `val_images`, `val_labels`
+- `test_images`, `test_labels`
+
+These predefined splits are released by the MedMNIST team to ensure consistency across research projects and public benchmarks.  
+We **did not perform any manual splitting** — instead, we directly loaded these arrays and respected the original distribution.
+
+To handle class imbalance during training, we applied **oversampling** to the minority class ("Normal") within the training set only.  
+The validation and test sets were kept **untouched**, ensuring fair and unbiased evaluation.
 
 ### Q3: **How is the evaluation metric (AUC) clinically relevant?**
 
