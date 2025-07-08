@@ -171,7 +171,22 @@ This model is clinically usable for screening tasks, with strong pneumonia detec
 
 ### Q1: **Why and what layers of the model did you fine-tune?**
 
-A: We fine-tuned **all layers** of InceptionV3 in Phase 2 to adapt the model to domain-specific features present in adult chest X-rays.
+A: 🎯 Why Did We Fine-Tune Certain Layers?
+We used InceptionV3 (pretrained on ImageNet), which already learns low-level features like edges, textures, and patterns in early layers. But:
+
+Pneumonia X-rays are grayscale, medical-specific, and differ from natural color images.
+
+So we kept early layers frozen (generic features) and fine-tuned later layers, which learn task-specific patterns like lung opacities or infiltrates.
+
+Goal:
+To retain general visual understanding but adapt high-level representations to pneumonia detection.
+
+🧩 Which Layers Were Fine-Tuned?
+|Layer Group |	Description|	Action Taken|
+| ------------ | ----- | ------------------------------------------ |
+|Initial layers (e.g., conv2d_1 to mixed7)	| Learn universal visual patterns — reusable. |	❄️ Frozen |
+|Deeper layers (e.g., mixed8, mixed9, mixed10)	| Contain more task-specific features — fine details, shape recognition, lesion textures. |	🔓 Unfrozen and fine-tuned|
+|Classification head |	Custom Dense + Dropout + Sigmoid layers we added on top | 🔨 Trained from scratch|
 
 ### Q2: **Describe how you split your data for fine-tuning.**
 
