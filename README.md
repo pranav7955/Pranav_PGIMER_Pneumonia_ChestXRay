@@ -204,7 +204,15 @@ A: "This model offers fast, accurate pneumonia detection with interpretability v
 * Add model explainability dashboard (Streamlit)
 * Evaluate performance across age/gender groups
 * ✅ Fine-tune cross-domain model: [Pn\_Test001](https://www.kaggle.com/code/pranav7955/pn-test001) that blends PneumoniaMNIST with additional real-world datasets
+---
+## 🔁 Reproducibility
 
+To reproduce results on Kaggle:
+
+1. Go to: [Pn\_Test004 Notebook](https://www.kaggle.com/code/pranav7955/pn-test004)
+2. Click “Copy & Edit” to run in your own kernel
+3. All required dataset and training scripts are included
 ---
 
 **Developed by Pranav for PGIMER Research**
+
