@@ -126,7 +126,7 @@ Optimizer: **Adam**
 * 🚨 **High Normal Recall (0.82)**: Model misses fewer Normal cases.
 * 🩺 **Balanced F1-scores**: Indicates strong generalization, not biased toward one class.
 
-#### 💡 Bottom Line:
+## 💡 Bottom Line:
 
 This model is clinically usable for screening tasks, with strong pneumonia detection and reasonable misclassification rate on Normal cases. Further improvements could focus on increasing recall for pneumonia (to avoid missed cases) or improving precision for Normal (to avoid overdiagnosis).
 ---
