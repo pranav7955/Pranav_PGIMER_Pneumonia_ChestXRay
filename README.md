@@ -85,18 +85,50 @@ Optimizer: **Adam**
 
 ![image](https://github.com/user-attachments/assets/d6974295-5e32-4069-b4b6-609b6fd3129d)
 
+
 ### Classification Report:
-              precision    recall  f1-score   support
+| Class         | Precision | Recall | F1-Score | Support |
+|---------------|-----------|--------|----------|---------|
+| Normal        | 0.73      | 0.82   | 0.77     | 234     |
+| Pneumonia     | 0.88      | 0.82   | 0.85     | 390     |
+| **Accuracy**  |           |        | 0.82     | 624     |
+| Macro Avg     | 0.80      | 0.82   | 0.81     | 624     |
+| Weighted Avg  | 0.82      | 0.82   | 0.82     | 624     |
 
-      Normal       0.73      0.82      0.77       234
-   Pneumonia       0.88      0.82      0.85       390
-
-    accuracy                           0.82       624
-   macro avg       0.80      0.82      0.81       624
-weighted avg       0.82      0.82      0.82       624
 
 ![image](https://github.com/user-attachments/assets/71750dff-db2d-406f-ac2a-2b8a8b95a1a3)
 
+### 📋 Metric Breakdown
+
+#### 🟢 Class: Normal
+
+* **Precision: 0.73** → When the model says “Normal”, it’s right 73% of the time.
+* **Recall: 0.82** → Out of all truly Normal cases, the model correctly identifies 82%.
+* **F1-score: 0.77** → A solid balance, but model still confuses some Normal with Pneumonia (False Positives).
+
+#### 🔴 Class: Pneumonia
+
+* **Precision: 0.88** → When the model says “Pneumonia”, it's correct 88% of the time.
+* **Recall: 0.82** → It captures 82% of actual Pneumonia cases.
+* **F1-score: 0.85** → Strong performance, indicating the model is good at identifying Pneumonia.
+
+### 📌 Overall Metrics
+
+| Metric       | Value | Meaning                                    |
+| ------------ | ----- | ------------------------------------------ |
+| Accuracy     | 0.82  | 82% of total predictions were correct      |
+| Macro Avg    | 0.81  | Equal weight to each class                 |
+| Weighted Avg | 0.82  | Reflects imbalance, dominated by Pneumonia |
+
+### ⚠️ Clinical Interpretation
+
+* 🔍 **High Pneumonia Precision (0.88)**: Good at catching actual pneumonia cases without falsely labeling Normal patients.
+* 🚨 **High Normal Recall (0.82)**: Model misses fewer Normal cases.
+* 🩺 **Balanced F1-scores**: Indicates strong generalization, not biased toward one class.
+
+### 💡 Bottom Line:
+
+This model is clinically usable for screening tasks, with strong pneumonia detection and reasonable misclassification rate on Normal cases. Further improvements could focus on increasing recall for pneumonia (to avoid missed cases) or improving precision for Normal (to avoid overdiagnosis).
 ---
 
 ## 🔍 Grad-CAM Visualizations
