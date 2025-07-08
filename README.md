@@ -126,7 +126,7 @@ Optimizer: **Adam**
 * 🚨 **High Normal Recall (0.82)**: Model misses fewer Normal cases.
 * 🩺 **Balanced F1-scores**: Indicates strong generalization, not biased toward one class.
 
-## 💡 Bottom Line:
+#### 💡 Bottom Line:
 
 This model is clinically usable for screening tasks, with strong pneumonia detection and reasonable misclassification rate on Normal cases. Further improvements could focus on increasing recall for pneumonia (to avoid missed cases) or improving precision for Normal (to avoid overdiagnosis).
 ---
@@ -171,7 +171,8 @@ This model is clinically usable for screening tasks, with strong pneumonia detec
 
 ### Q1: **Why and what layers of the model did you fine-tune?**
 
-A: #### 🎯 Why Did We Fine-Tune Certain Layers?
+A: 
+#### 🎯 Why Did We Fine-Tune Certain Layers?
 
 We used **InceptionV3 pretrained on ImageNet**, which learns general visual patterns like edges and textures in its early layers. However:
 
