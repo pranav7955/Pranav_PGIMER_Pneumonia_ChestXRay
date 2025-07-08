@@ -3,7 +3,7 @@
 This repository contains the full pipeline and analysis code for detecting pneumonia from chest X-rays using Transfer Learning with InceptionV3. The project was developed and evaluated as part of a clinical collaboration with PGIMER, India.
 
 ---
-
+# 🌟🌟🌟
 ## 📂 Repository Contents
 
 * `Pn_Test004.ipynb` – The full notebook (also available [on Kaggle](https://www.kaggle.com/code/pranav7955/pn-test004)) containing:
@@ -166,7 +166,7 @@ This model is clinically usable for screening tasks, with strong pneumonia detec
 * Pediatric focus, with simulated adult fine-tuning
 
 ---
-
+# 🌟🌟🌟
 ## ✅ Clinical Q\&A
 
 ### Q1: **Why and what layers of the model did you fine-tune?**
@@ -255,6 +255,7 @@ A: 🩺 Clinician Takeaway (One-Liner)
 This clinical ready screening model accurately detects pneumonia in X-rays with visual explanations — and holds greater potential with further fine-tuning on 5,000+ high-quality adult X-rays [Phase 3 dataset](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia).
 
 ---
+# 🌟🌟🌟
 ## 🛠️ Hyperparameter Choices – A Quick Note
 #### A short note on hyper-parameter choices (learning rate, batch size, epochs, etc.).
 
@@ -288,6 +289,7 @@ We carefully selected training hyperparameters to balance speed, generalization,
 * Evaluate performance across age/gender groups
 * ✅ Fine-tune cross-domain model: [Pn\_Test001](https://www.kaggle.com/code/pranav7955/pn-test001) that blends PneumoniaMNIST with additional real-world datasets
 ---
+# 🌟🌟🌟
 ## 🔁 Reproducibility
 
 To reproduce results on Kaggle:
@@ -298,33 +300,3 @@ To reproduce results on Kaggle:
 ---
 
 **Developed by Pranav for PGIMER Research**
-
-## 🌟 Key Highlights
-
-This section outlines the major achievements and contributions of the project.
-
----
-
-# 🌟🌟🌟 Model Evaluation Results 🌟🌟🌟
-
-Includes accuracy, AUC, precision-recall, and misclassification analysis.
-
----
-
-> 🌟 **Star Feature:** We fine-tuned only the top 30 layers of InceptionV3 for pneumonia detection.
-
----
-
----
-🌟🌟🌟🌟🌟  
-**Critical Section: Fine-Tuning Strategy**  
-🌟🌟🌟🌟🌟  
----
-
-#### ✨ Why This Model Deserves Clinical Attention ✨
-
-Trained on real patient data, interpretable Grad-CAMs, and strong ROC-AUC performance.
-
----
-
-> 📌 **Note:** This section is critical for understanding model adaptation and layer fine-tuning.
